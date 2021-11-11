@@ -5,7 +5,7 @@ const Login = (props) => {
       {props.loginClicked && props.mobileNumber !== undefined && props.password !== undefined && (
         <Navigate to='/dashboard' />
       )}
-      <div class='w-full max-w-xs'>
+      <div class='w-full max-w-xs '>
         <form class='bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
           <div class='mb-4'>
             <label class='block text-gray-700 text-sm font-bold mb-2' for='mobilenumber'>

@@ -4,7 +4,7 @@ import DashBoard from './Dashboard';
 import About from './About';
 const Auth = (props) => {
   let location = useLocation();
-  console.log(props, location);
+
   const switchTabs = () => {
     switch (location.pathname) {
       case '/dashboard':

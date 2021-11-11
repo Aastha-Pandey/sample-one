@@ -1,14 +1,16 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+
+import Login from './../redux/containers/logincontainer';
 
 class SignUp extends React.Component {
   render() {
     return (
       <>
-        {this.props.signupClicked &&
+        {this.props.loginButtonClicked &&
+          this.props.signupClicked &&
           this.props.name !== undefined &&
           this.props.mobileNumber !== undefined &&
-          this.props.password !== undefined && <Navigate to='/dashboard' />}
+          this.props.password !== undefined && <Login />}
         <div className='w-full max-w-xs'>
           <form className='bg-blue-50  shadow-md rounded px-8 pt-6 pb-8 mb-4'>
             <div class='mb-4'>
@@ -73,6 +75,7 @@ class SignUp extends React.Component {
                       ...this.props,
                       signupClicked: true,
                     });
+                    this.props.setLoginButtonClicked(true);
                   } else {
                     alert('Fill the form!');
                   }

@@ -24,7 +24,10 @@ const HomeComponent = () => {
               </div>
             ) : (
               <div className='flex flex-col'>
-                <SignUp.signUpConnect />
+                <SignUp.signUpConnect
+                  loginButtonClicked={loginButtonClicked}
+                  setLoginButtonClicked={setLoginButtonClicked}
+                />
                 <div className='flex space-x-4'>
                   <p class='text-left text-gray-500 text-xs pb-4 '>Already a member?</p>
                   <button
