@@ -1,9 +1,10 @@
-import Authentication from './../redux/containers/logincontainer';
-
+import { Navigate } from 'react-router-dom';
 const Login = (props) => {
   return (
     <>
-      {props.loginClicked && <Authentication.authenticationConnect />}
+      {props.loginClicked && props.mobileNumber !== undefined && props.password !== undefined && (
+        <Navigate to='/dashboard' />
+      )}
       <div class='w-full max-w-xs'>
         <form class='bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
           <div class='mb-4'>
@@ -45,10 +46,14 @@ const Login = (props) => {
           <div class='flex items-center justify-between'>
             <button
               onClick={() => {
-                props.loginHandler({
-                  ...props,
-                  loginClicked: true,
-                });
+                if (props.mobileNumber && props.password) {
+                  props.loginHandler({
+                    ...props,
+                    loginClicked: true,
+                  });
+                } else {
+                  alert('Fill the details!');
+                }
               }}
               className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
               type='button'

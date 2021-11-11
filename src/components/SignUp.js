@@ -10,7 +10,7 @@ class SignUp extends React.Component {
           this.props.mobileNumber !== undefined &&
           this.props.password !== undefined && <Navigate to='/dashboard' />}
         <div className='w-full max-w-xs'>
-          <form className='bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+          <form className='bg-blue-50  shadow-md rounded px-8 pt-6 pb-8 mb-4'>
             <div class='mb-4'>
               <label class='block text-gray-700 text-sm font-bold mb-2' for='name'>
                 Name
@@ -68,10 +68,14 @@ class SignUp extends React.Component {
             <div class='flex items-center justify-between'>
               <button
                 onClick={() => {
-                  this.props.signUpHandler({
-                    ...this.props,
-                    signupClicked: true,
-                  });
+                  if (this.props.name && this.props.mobileNumber && this.props.password) {
+                    this.props.signUpHandler({
+                      ...this.props,
+                      signupClicked: true,
+                    });
+                  } else {
+                    alert('Fill the form!');
+                  }
                 }}
                 className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
                 type='button'

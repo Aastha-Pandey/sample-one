@@ -7,7 +7,7 @@ const HomeComponent = () => {
     <>
       <div className='bg-blue-300 relative h-screen flex items-center justify-around py-32'>
         <div className='bg-blue-50 absolute h-5/6 w-11/12 grid grid-cols-2 rounded-lg '>
-          <div className='flex justify-center items-center'>
+          <div className='flex justify-center items-center h-screen md:h-auto lg:h-auto'>
             {loginButtonClicked ? (
               <div className='flex flex-col'>
                 <Login.loginConnect />
