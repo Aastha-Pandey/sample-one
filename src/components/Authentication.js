@@ -1,5 +1,11 @@
+import { Navigate } from 'react-router-dom';
 const Authentication = (props) => {
-  console.log(props);
-  return <></>;
+  return (
+    <>
+      {props.mobileNumber !== undefined && props.password !== undefined && (
+        <Navigate to='/dashboard' />
+      )}
+    </>
+  );
 };
 export default Authentication;

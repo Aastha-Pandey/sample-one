@@ -2,6 +2,7 @@ const initialState = {
   name: undefined,
   mobileNumber: undefined,
   password: undefined,
+  signupClicked: false,
 };
 
 export default function signup(state = initialState, action) {
@@ -12,6 +13,7 @@ export default function signup(state = initialState, action) {
         name: action.data.name,
         mobileNumber: action.data.mobileNumber,
         password: action.data.password,
+        signupClicked: action.data.signupClicked,
       };
 
     default:

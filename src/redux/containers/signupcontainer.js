@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     name: state.signup.name,
     mobileNumber: state.signup.mobileNumber,
     password: state.signup.password,
+    signupClicked: state.signup.signupClicked,
   };
 };
 

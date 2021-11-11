@@ -1,13 +1,44 @@
+import { useState } from 'react';
 import SignUp from './../redux/containers/signupcontainer';
+import Login from './../redux/containers/logincontainer';
 const HomeComponent = () => {
+  const [loginButtonClicked, setLoginButtonClicked] = useState();
   return (
     <>
       <div className='bg-blue-300 relative h-screen flex items-center justify-around py-32'>
         <div className='bg-blue-50 absolute h-5/6 w-11/12 grid grid-cols-2 rounded-lg '>
           <div className='flex justify-center items-center'>
-            <SignUp.signUpConnect />
+            {loginButtonClicked ? (
+              <div className='flex flex-col'>
+                <Login.loginConnect />
+                <div className='flex space-x-4'>
+                  <p class='text-left text-gray-500 text-xs pb-4 '>Not a member?</p>
+                  <button
+                    onClick={() => setLoginButtonClicked(false)}
+                    class='font-semibold text-blue-900 border border-r-0 border-l-0 border-t-0 border-blue-900 text-sm self-start'
+                    type='button'
+                  >
+                    Sign up
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className='flex flex-col'>
+                <SignUp.signUpConnect />
+                <div className='flex space-x-4'>
+                  <p class='text-left text-gray-500 text-xs pb-4 '>Already a member?</p>
+                  <button
+                    onClick={() => setLoginButtonClicked(true)}
+                    class='font-semibold text-blue-900 border border-r-0 border-l-0 border-t-0 border-blue-900 text-sm self-start'
+                    type='button'
+                  >
+                    Login
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
-          <div className='bg-blue-700 rounded-lg flex flex-col justify-center '>
+          <div className='bg-blue-700 hidden rounded-lg md:flex md:flex-col lg:flex lg:flex-col justify-center '>
             <div className='flex justify-between'>
               <div className='flex space-x-4'>
                 <div className='bg-yellow-500 -translate-y-7  rounded-sm -translate-x-10 w-24 h-40 transform  skew-y-12 ...'></div>

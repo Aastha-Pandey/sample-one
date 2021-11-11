@@ -1,9 +1,14 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 class SignUp extends React.Component {
   render() {
     return (
       <>
+        {this.props.signupClicked &&
+          this.props.name !== undefined &&
+          this.props.mobileNumber !== undefined &&
+          this.props.password !== undefined && <Navigate to='/dashboard' />}
         <div className='w-full max-w-xs'>
           <form className='bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4'>
             <div class='mb-4'>
@@ -11,6 +16,7 @@ class SignUp extends React.Component {
                 Name
               </label>
               <input
+                required
                 onChange={(event) => {
                   this.props.signUpHandler({
                     ...this.props,
@@ -28,6 +34,7 @@ class SignUp extends React.Component {
                 Mobile number
               </label>
               <input
+                required
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
                 id='mobilenumber'
                 type='text'
@@ -45,22 +52,28 @@ class SignUp extends React.Component {
                 Password
               </label>
               <input
+                required
                 onChange={(event) => {
                   this.props.signUpHandler({
                     ...this.props,
                     password: event.target.value,
                   });
                 }}
-                className='shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
+                className='shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
                 id='password'
                 type='password'
                 placeholder='******************'
               />
-              <p class='text-red-500 text-xs italic'>Please choose a password.</p>
             </div>
             <div class='flex items-center justify-between'>
               <button
-                class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+                onClick={() => {
+                  this.props.signUpHandler({
+                    ...this.props,
+                    signupClicked: true,
+                  });
+                }}
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
                 type='button'
               >
                 Sign Up
